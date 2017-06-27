@@ -41,9 +41,9 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         $this->app->resolving('df.service', function (ServiceManager $df) {
             $df->addType(
                 new ServiceType([
-                    'name'            => 'mysql',
+                    'name'            => 'test',
                     'label'           => 'MySQL',
-                    'description'     => 'Database service supporting MySQL connections.',
+                    'description'     => 'test service supporting MySQL connections.',
                     'group'           => ServiceTypeGroups::DATABASE,
                     'config_handler'  => MySqlDbConfig::class,
                     'default_api_doc' => function ($service) {
@@ -51,36 +51,6 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
                     },
                     'factory'         => function ($config) {
                         return new MySqlDb($config);
-                    },
-                ])
-            );
-            $df->addType(
-                new ServiceType([
-                    'name'            => 'pgsql',
-                    'label'           => 'PostgreSQL',
-                    'description'     => 'Database service supporting PostgreSQL connections.',
-                    'group'           => ServiceTypeGroups::DATABASE,
-                    'config_handler'  => PgSqlDbConfig::class,
-                    'default_api_doc' => function ($service) {
-                        return $this->buildServiceDoc($service->id, PostgreSqlDb::getApiDocInfo($service));
-                    },
-                    'factory'         => function ($config) {
-                        return new PostgreSqlDb($config);
-                    },
-                ])
-            );
-            $df->addType(
-                new ServiceType([
-                    'name'            => 'sqlite',
-                    'label'           => 'SQLite',
-                    'description'     => 'Database service supporting SQLite connections.',
-                    'group'           => ServiceTypeGroups::DATABASE,
-                    'config_handler'  => SqliteDbConfig::class,
-                    'default_api_doc' => function ($service) {
-                        return $this->buildServiceDoc($service->id, SqliteDb::getApiDocInfo($service));
-                    },
-                    'factory'         => function ($config) {
-                        return new SqliteDb($config);
                     },
                 ])
             );
