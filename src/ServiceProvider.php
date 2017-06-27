@@ -1,5 +1,5 @@
 <?php
-namespace DreamFactory\Core\SqlDb;
+namespace DreamFactory\Core\TestDb;
 
 use DreamFactory\Core\Components\ServiceDocBuilder;
 use DreamFactory\Core\Components\DbSchemaExtensions;
